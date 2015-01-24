@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :welcome, only: [:index]
-  resources :users, only: [:new, :show]
+  resources :users, only: [:new, :show, :create]
   resources :messages, only: [:new, :show]
-  resources :sessions, only: [:create]
+  resources :sessions, only: [:create, :new, :delete]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
