@@ -1,0 +1,6 @@
+%h1
+  Sign Up
+
+=form_for :user do |f|
+  =f.text_field       :handle, placeholder: 'username'
+  =f.password_field   :password, placeholder: 'password'
