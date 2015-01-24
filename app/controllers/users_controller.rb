@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "Signed Up"
+      @user.update(karma: 0) unless @user.karma
     else
       render 'new'
     end
@@ -15,10 +16,12 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @new_messages = Message.where(receiver_id: @user.id)
+    @sent_messages = Message.where(sender_id: @user.id)
   end
 
   private
     def user_params
-      params.require(:user).permit(:handle, :password)
+      params.require(:user).permit(:handle, :password, :karma)
     end
 end

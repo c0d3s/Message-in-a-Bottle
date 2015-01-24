@@ -1,2 +1,19 @@
 %h1
   ="Welcome, #{@user.handle}!"
+
+%h3
+  New Messages
+%p
+  -@new_messages.each do |m|
+    =m.sender.handle if m.sender
+    =m.content
+    %br
+%h3
+  Sent Messages
+%p
+  -@sent_messages.each do |m|
+    =m.receiver.handle if m.receiver
+    =m.content
+    %button.thumbs_up Thumbs Up
+    %button.thumbs_down Thumbs Down
+    %br

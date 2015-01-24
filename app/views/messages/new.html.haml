@@ -1,0 +1,4 @@
+=form_for :message, url: {action: 'create'} do |f|
+  =f.text_field :content, placeholder: 'type your message here'
+  =f.hidden_field :sender_id, value: @sender.id
+  =f.submit
