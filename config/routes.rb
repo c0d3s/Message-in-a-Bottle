@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :welcome, only: [:index]
   resources :users, only: [:new, :show, :create]
-  resources :messages, only: [:new, :show, :create]
+  resources :messages, only: [:new, :show, :create, :update]
   resources :sessions, only: [:create, :new]
 
   get 'login' => 'sessions#new'

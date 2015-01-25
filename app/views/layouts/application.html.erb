@@ -8,8 +8,8 @@
 </head>
 <body>
 
-
 <%= yield %>
+
 <%= link_to "logout", {controller: "sessions", action: "destroy"}, method: :post%>
 </body>
 </html>

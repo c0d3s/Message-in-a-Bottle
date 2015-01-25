@@ -4,6 +4,10 @@ class MessagesController < ApplicationController
     @message = Message.new
   end
 
+  def show
+    @message = Message.find(params[:id])
+  end
+
   def create
     @message = Message.new(message_params)
     if @message.save
@@ -15,9 +19,15 @@ class MessagesController < ApplicationController
     @message.update(receiver_id: new_receiver.id)
   end
 
+  def update
+    @message = Message.find(params[:id])
+    @message.update(thumbs_up: message_params[:thumbs_up])
+    redirect_to user_path(current_user)
+  end
+
   private
     def message_params
-      params.require(:message).permit(:content, :sender_id)
+      params.require(:message).permit(:content, :sender_id, :thumbs_up)
     end
 
     def new_receiver

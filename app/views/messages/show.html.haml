@@ -1,0 +1,9 @@
+="#{@message.sender.handle} Karma: #{@message.sender.karma}"
+=@message.content
+=form_for :message, url: {action: 'update'}, method: :put do |f|
+  =f.radio_button(:thumbs_up, true)
+  =label_tag(:thumbs_up_true, 'Thumbs Up')
+  =f.radio_button(:thumbs_up, false)
+  =label_tag(:thumbs_up_false, 'Thumbs Down')
+
+  =f.submit

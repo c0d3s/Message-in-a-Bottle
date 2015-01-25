@@ -5,8 +5,7 @@
   New Messages
 %p
   -@new_messages.each do |m|
-    =m.sender.handle if m.sender
-    =m.content
+    =link_to m.sender.handle, message_path(m) if m.sender
     %br
 %h3
   Sent Messages
@@ -14,6 +13,4 @@
   -@sent_messages.each do |m|
     =m.receiver.handle if m.receiver
     =m.content
-    %button.thumbs_up Thumbs Up
-    %button.thumbs_down Thumbs Down
     %br
