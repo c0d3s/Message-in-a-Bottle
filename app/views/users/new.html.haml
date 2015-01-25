@@ -4,4 +4,5 @@
 =form_for :user, url: {action: 'create'} do |f|
   =f.text_field       :handle, placeholder: 'username'
   =f.password_field   :password, placeholder: 'password'
+  =f.hidden_field     :karma, value: 0
   =f.submit

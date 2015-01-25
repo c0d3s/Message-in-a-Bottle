@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "Signed Up"
-      @user.update(karma: 0) unless @user.karma
     else
       render 'new'
     end

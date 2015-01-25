@@ -21,7 +21,9 @@ class MessagesController < ApplicationController
 
   def update
     @message = Message.find(params[:id])
+    @sender = User.find(@message.sender_id)
     @message.update(thumbs_up: message_params[:thumbs_up])
+    @sender.update_karma(@message)
     redirect_to user_path(current_user)
   end
 
