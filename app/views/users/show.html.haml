@@ -5,7 +5,10 @@
   New Messages
 %p
   -@new_messages.each do |m|
-    =link_to m.sender.handle, message_path(m) if m.sender
+    %div.message_sender
+      =link_to m.sender.handle, user_path(@user) if m.sender
+      %div.message_content
+        =render :partial => 'messages/show', locals: {message: m}
     %br
 %h3
   Sent Messages

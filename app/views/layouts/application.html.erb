@@ -9,7 +9,12 @@
 <body>
 
 <%= yield %>
+<%if @current_user %>
+  <%= link_to "logout", {controller: "sessions", action: "destroy"}, method: :post%>
+<%else%>
+  <%= link_to "sign in", new_session_path %>
+  <%= link_to "sign up", new_user_path %>
+<%end%>
 
-<%= link_to "logout", {controller: "sessions", action: "destroy"}, method: :post%>
 </body>
 </html>

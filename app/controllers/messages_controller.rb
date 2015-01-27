@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  respond_to :html, :js
+
   def new
     @sender = current_user
     @message = Message.new
@@ -24,6 +26,7 @@ class MessagesController < ApplicationController
     @sender = User.find(@message.sender_id)
     @message.update(thumbs_up: message_params[:thumbs_up])
     @sender.update_karma(@message)
+    Message.destroy(@message.id)
     redirect_to user_path(current_user)
   end
 
